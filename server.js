@@ -23,10 +23,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-app.get("*", (req, res) => {
-  res.sendFile("./client/build/index.html");
-});
-
 app.post("/login", upload.none(), async (req, res) => {
   console.log(req.body);
   let userArr = await user.find().and([{ email: req.body.email }]);
@@ -74,6 +70,10 @@ app.post("/signup", upload.single("profilePic"), async (req, res) => {
     console.log("Unable to inserting the data into database");
     res.json({ status: "failure", msg: "Unable to  create account" });
   }
+});
+
+app.get("*", (req, res) => {
+  res.sendFile("./client/build/index.html");
 });
 
 app.listen(3333, () => {
