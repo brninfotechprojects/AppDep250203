@@ -77,8 +77,8 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-app.listen(3333, () => {
-  console.log("Listening to port 3333");
+app.listen(4567, () => {
+  console.log("Listening to port 4567");
 });
 
 let userSchema = new mongoose.Schema({
