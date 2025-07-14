@@ -1,27 +1,27 @@
-// const mongoose = require("mongoose");
-// const express = require("express");
-// const cors = require("cors");
-// const multer = require("multer");
-// const path = require("path");
+const mongoose = require("mongoose");
+const express = require("express");
+const cors = require("cors");
+const multer = require("multer");
+const path = require("path");
 
-// let app = express();
-// app.use(cors());
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
-// app.use("/profilePics", express.static("profilePics"));
-// app.use(express.static(path.join(__dirname, "./client/build")));
+let app = express();
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use("/profilePics", express.static("profilePics"));
+app.use(express.static(path.join(__dirname, "./client/build")));
 
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     console.log(file);
-//     cb(null, "profilePics");
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, `${Date.now()}_${file.originalname}`);
-//   },
-// });
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    console.log(file);
+    cb(null, "profilePics");
+  },
+  filename: function (req, file, cb) {
+    cb(null, `${Date.now()}_${file.originalname}`);
+  },
+});
 
-// const upload = multer({ storage: storage });
+const upload = multer({ storage: storage });
 
 // app.post("/login", upload.none(), async (req, res) => {
 //   console.log(req.body);
@@ -72,40 +72,38 @@
 //   }
 // });
 
-// app.get("*", (req, res) => {
-//   //res.sendFile("./client/build/index.html");
-//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-// });
+app.get("*", (req, res) => {
+  //res.sendFile("./client/build/index.html");
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
-// app.listen(4567, () => {
-//   console.log("Listening to port 4567");
-// });
+app.listen(4567, () => {
+  console.log("Listening to port 4567");
+});
 
-// let userSchema = new mongoose.Schema({
-//   firstName: String,
-//   lastName: String,
-//   age: Number,
-//   email: String,
-//   password: String,
-//   mobileNo: Number,
-//   profilePic: String,
-// });
+let userSchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  age: Number,
+  email: String,
+  password: String,
+  mobileNo: Number,
+  profilePic: String,
+});
 
-// let user = new mongoose.model("users", userSchema, "2503user");
+let user = new mongoose.model("users", userSchema, "2503user");
 
-// // let insertDataintoDB = async ()=>{
-// // }
+// let insertDataintoDB = async ()=>{
+// }
 
-// let connectedToMDB = async () => {
-//   try {
-//     await mongoose.connect(
-//       "mongodb+srv://Navitha:Navitha2324@cluster0.mxvyppw.mongodb.net/BatchMern2503?retryWrites=true&w=majority&appName=Cluster0"
-//     );
-//     console.log("Successfully connected to MDB");
-//   } catch (err) {
-//     console.log("Unable to connect to MDB");
-//   }
-// };
-// connectedToMDB();
-
-console.log("just executing");
+let connectedToMDB = async () => {
+  try {
+    await mongoose.connect(
+      "mongodb+srv://Navitha:Navitha2324@cluster0.mxvyppw.mongodb.net/BatchMern2503?retryWrites=true&w=majority&appName=Cluster0"
+    );
+    console.log("Successfully connected to MDB");
+  } catch (err) {
+    console.log("Unable to connect to MDB");
+  }
+};
+connectedToMDB();
