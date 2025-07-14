@@ -77,7 +77,7 @@ app.post("/signup", upload.single("profilePic"), async (req, res) => {
 //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 // });
 
-app.listen(4567, () => {
+app.listen(3333, () => {
   console.log("Listening to port 4567");
 });
 
