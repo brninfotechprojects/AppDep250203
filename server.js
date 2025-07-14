@@ -72,10 +72,10 @@ const upload = multer({ storage: storage });
 //   }
 // });
 
-app.get("*", (req, res) => {
-  //res.sendFile("./client/build/index.html");
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+// app.get("*", (req, res) => {
+//   //res.sendFile("./client/build/index.html");
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });
 
 app.listen(4567, () => {
   console.log("Listening to port 4567");
